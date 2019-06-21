@@ -12,13 +12,20 @@ namespace DesktopChanger
         public static string[] WallpaperPath = new string[7];
         public static void WallpaperPathWorker()
         {
-           using (var sr = new StreamReader("Path.txt"))
-           {
-                for (int i = 0; i < 7; i++)
+            if (!File.Exists("Path.txt"))
+            {
+                File.CreateText("Path.txt").Dispose();
+            }
+            else
+            {
+                using (var sr = new StreamReader("Path.txt"))
                 {
-                        WallpaperPath[i] = sr.ReadLine();                
+                    for (int i = 0; i < 7; i++)
+                    {
+                        WallpaperPath[i] = sr.ReadLine();
+                    }
                 }
-           }
+            }
         }
 
         public static void WallpaperPathChanger(string path, int day)

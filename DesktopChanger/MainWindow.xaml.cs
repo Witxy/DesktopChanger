@@ -138,5 +138,26 @@ namespace DesktopChanger
                 DayChangeLogic.timer.Start();
              }         
         }
+
+        private void ButtonDaySet_Click(object sender, RoutedEventArgs e)
+        {
+            int DayIndex = comboBox.SelectedIndex;
+            switch (DayIndex)
+            {
+                case 0: PathWorker.WallpaperPathChanger(TextBoxWallpaperPath.Text, DayIndex); break;
+                case 1: PathWorker.WallpaperPathChanger(TextBoxWallpaperPath.Text, DayIndex); break;
+                case 2: PathWorker.WallpaperPathChanger(TextBoxWallpaperPath.Text, DayIndex); break;
+                case 3: PathWorker.WallpaperPathChanger(TextBoxWallpaperPath.Text, DayIndex); break;
+                case 4: PathWorker.WallpaperPathChanger(TextBoxWallpaperPath.Text, DayIndex); break;
+                case 5: PathWorker.WallpaperPathChanger(TextBoxWallpaperPath.Text, DayIndex); break;
+                case 6: PathWorker.WallpaperPathChanger(TextBoxWallpaperPath.Text, DayIndex); break;
+            }
+            PathWorker.WallpaperPathWriter();
+        }
+
+        private void ButtonPathSet_Click(object sender, RoutedEventArgs e)
+        {
+            WallPath(TextBoxWallpaperPath);
+        }
     }
 }
