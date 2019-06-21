@@ -1,84 +1,57 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Globalization;
-using System.Runtime.InteropServices;
-using System.IO;
 
 
 namespace DesktopChanger
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        bool isZero = false;
-        String FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)+"\\Path.txt";
         bool isExisted = false;
-        System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
         public MainWindow()
         {
             InitializeComponent();
-            
+
             try
             {
-                StreamReader file = new StreamReader(FilePath);
-                txtMonday.Text = file.ReadLine();
-                txtTuesday.Text = file.ReadLine();
-                txtWednesday.Text = file.ReadLine();
-                txtThursday.Text = file.ReadLine();
-                txtFriday.Text = file.ReadLine();
-                txtSaturday.Text = file.ReadLine();
-                txtSunday.Text = file.ReadLine();
-                file.Close();
+                PathWorker.WallpaperPathWorker();
                 isExisted = true;
 
                 DateTime localDate1 = DateTime.Now;
                 String minute = localDate1.ToString("mm", new CultureInfo("en-US"));
                 String second = localDate1.ToString("ss", new CultureInfo("en-US"));
 
-                int trueMinute = 59 - Convert.ToInt16(minute);
+                int trueMinute = 0;
                 int trueSeconds = 60 - Convert.ToInt16(second);
 
-                timer.Tick += new EventHandler(timerTick);
-                timer.Interval = new TimeSpan(0, trueMinute, trueSeconds);
-                timer.Start();
+                DayChangeLogic.timer.Tick += new EventHandler(DayChangeLogic.timerTick);
+                DayChangeLogic.timer.Interval = new TimeSpan(0, trueMinute, trueSeconds);
+                DayChangeLogic.timer.Start();
             }
-            catch(Exception ev)
+            catch (Exception ev)
             {
 
             }
 
-            if(isExisted)
+            if (isExisted)
             {
-                    this.Hide();
+                this.Hide();
             }
-
 
             System.Windows.Forms.NotifyIcon ni = new System.Windows.Forms.NotifyIcon();
-            ni.Icon = new System.Drawing.Icon("D://back//fire-2-24.ico");
+            ni.Icon = new System.Drawing.Icon("fire-2-24.ico");
             ni.Visible = true;
             System.Windows.Forms.ContextMenu myMenu1 = new System.Windows.Forms.ContextMenu();
-           
+
             myMenu1.MenuItems.Add("Настройки", new EventHandler(FormShow));
             myMenu1.MenuItems.Add("Выход", new EventHandler(FormExit));
             ni.ContextMenu = myMenu1;
-            
+    
         }
 
+        
         public void FormShow(object sender, EventArgs e)
         {
             this.Show();
@@ -90,7 +63,6 @@ namespace DesktopChanger
             this.Close();
         }
 
-
         protected override void OnStateChanged(EventArgs e)
         {
             if (WindowState == WindowState.Minimized)
@@ -98,13 +70,6 @@ namespace DesktopChanger
 
             base.OnStateChanged(e);
         }
-
- 
-
-        [DllImport("User32", CharSet = CharSet.Auto)]
-        public static extern int SystemParametersInfo(int uiAction, int uiParam, string pvParam, uint fWinIni);
-
-
 
         public static void WallPath(Control p)
         {
@@ -119,14 +84,6 @@ namespace DesktopChanger
             }
 
         }
-
-        public static void WallChange(String path)
-        {
-            SystemParametersInfo(0x0014, 0, path, 0x0001);
-        }
-
-
-        
 
         private void BtnMonday_Click(object sender, RoutedEventArgs e)
         {
@@ -164,98 +121,22 @@ namespace DesktopChanger
         }
 
         private void BtnReady_Click(object sender, RoutedEventArgs e)
-        {
+        {              
+             PathWorker.WallpaperPathChanger(txtMonday.Text, 0);
+             PathWorker.WallpaperPathChanger(txtSaturday.Text, 1);
+             PathWorker.WallpaperPathChanger(txtWednesday.Text, 2);
+             PathWorker.WallpaperPathChanger(txtThursday.Text, 3);
+             PathWorker.WallpaperPathChanger(txtFriday.Text, 4);
+             PathWorker.WallpaperPathChanger(txtSaturday.Text, 5);
+             PathWorker.WallpaperPathChanger(txtSunday.Text, 6);
+             PathWorker.WallpaperPathWriter();   
 
-            if (txtMonday.Text != "" &&
-                txtTuesday.Text != "" &&
-                txtWednesday.Text != "" &&
-                txtThursday.Text != "" &&
-                txtFriday.Text != "" &&
-                txtSaturday.Text != "" &&
-                txtSunday.Text != "")
-            {
-
-                StreamWriter file = new StreamWriter(FilePath);
-                file.Write(txtMonday.Text);
-                file.Write(Environment.NewLine);
-                file.Write(txtTuesday.Text);
-                file.Write(Environment.NewLine);
-                file.Write(txtWednesday.Text);
-                file.Write(Environment.NewLine);
-                file.Write(txtThursday.Text);
-                file.Write(Environment.NewLine);
-                file.Write(txtFriday.Text);
-                file.Write(Environment.NewLine);
-                file.Write(txtSaturday.Text);
-                file.Write(Environment.NewLine);
-                file.Write(txtSunday.Text);
-                file.Close();
-
-                if (!isExisted)
-                {
-  
-
-                    timer.Tick += new EventHandler(timerTick);
-                    timer.Interval = new TimeSpan(0, 0, 5);
-                    timer.Start();
-                }
-            }
-            else
-            {
-                System.Windows.Forms.MessageBox.Show("Пожалуйста, заполните все поля");
-            }
+             if (!isExisted)
+             {
+                DayChangeLogic.timer.Tick += new EventHandler(DayChangeLogic.timerTick);
+                DayChangeLogic.timer.Interval = new TimeSpan(0, 0, 5);
+                DayChangeLogic.timer.Start();
+             }         
         }
- 
-        String newDay = "";
-        private void timerTick(object sender, EventArgs e)
-        {
-            if (!isZero)
-            {
-                timer.Interval = new TimeSpan(1, 0, 10);
-                isZero = true;
-            }
-            DateTime localDate = DateTime.Now;
-            String day = localDate.ToString("dddd", new CultureInfo("en-US"));
-            if (newDay != day)
-            {
-                dayChange(day);
-            }
-            
-        }
-
-        public void dayChange(string day)
-        {
-            switch (day)
-            {
-                case "Monday":
-                    WallChange(txtMonday.Text.ToString());
-                    newDay = day;
-                    break;
-                case "Tuesday":
-                    WallChange(txtTuesday.Text.ToString());
-                    newDay = day;
-                    break;
-                case "Wednesday":
-                    WallChange(txtWednesday.Text.ToString());
-                    newDay = day;
-                    break;
-                case "Thursday":
-                    WallChange(txtThursday.Text.ToString());
-                    break;
-                case "Friday":
-                    WallChange(txtFriday.Text.ToString());
-                    break;
-                case "Saturday":
-                    WallChange(txtSaturday.Text.ToString());
-                    break;
-                case "Sunday":
-                    WallChange(txtTuesday.Text.ToString());
-                    break;
-                default:
-                    break;
-            }
-        }
-
-
     }
 }
