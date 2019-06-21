@@ -25,7 +25,7 @@ namespace DesktopChanger
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        bool isZero = false;
         String FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)+"\\Path.txt";
         bool isExisted = false;
         System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
@@ -205,50 +205,57 @@ namespace DesktopChanger
                 System.Windows.Forms.MessageBox.Show("Пожалуйста, заполните все поля");
             }
         }
-        bool isZero = false;
+ 
         String newDay = "";
         private void timerTick(object sender, EventArgs e)
         {
             if (!isZero)
             {
-                timer.Interval = new TimeSpan(1, 0, 0);
+                timer.Interval = new TimeSpan(1, 0, 10);
                 isZero = true;
             }
             DateTime localDate = DateTime.Now;
             String day = localDate.ToString("dddd", new CultureInfo("en-US"));
             if (newDay != day)
             {
-                switch (day)
-                {
-                    case "Monday":
-                        WallChange(txtMonday.Text.ToString());
-                        newDay = day;
-                        break;
-                    case "Tuesday":
-                        WallChange(txtTuesday.Text.ToString());
-                        newDay = day;
-                        break;
-                    case "Wednesday":
-                        WallChange(txtWednesday.Text.ToString());
-                        newDay = day;
-                        break;
-                    case "Thursday":
-                        WallChange(txtThursday.Text.ToString());
-                        break;
-                    case "Friday":
-                        WallChange(txtFriday.Text.ToString());
-                        break;
-                    case "Saturday":
-                        WallChange(txtSaturday.Text.ToString());
-                        break;
-                    case "Sunday":
-                        WallChange(txtTuesday.Text.ToString());
-                        break;
-                    default:
-                        break;
-                }
+                dayChange(day);
             }
             
         }
+
+        public void dayChange(string day)
+        {
+            switch (day)
+            {
+                case "Monday":
+                    WallChange(txtMonday.Text.ToString());
+                    newDay = day;
+                    break;
+                case "Tuesday":
+                    WallChange(txtTuesday.Text.ToString());
+                    newDay = day;
+                    break;
+                case "Wednesday":
+                    WallChange(txtWednesday.Text.ToString());
+                    newDay = day;
+                    break;
+                case "Thursday":
+                    WallChange(txtThursday.Text.ToString());
+                    break;
+                case "Friday":
+                    WallChange(txtFriday.Text.ToString());
+                    break;
+                case "Saturday":
+                    WallChange(txtSaturday.Text.ToString());
+                    break;
+                case "Sunday":
+                    WallChange(txtTuesday.Text.ToString());
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
     }
 }
