@@ -9,6 +9,7 @@ namespace DesktopChanger
 {
     public partial class MainWindow : Window
     {
+        public static string Style;
         public MainWindow()
         {
             PathWorker.WallpaperPathWorker();
@@ -117,6 +118,11 @@ namespace DesktopChanger
         {
             var SelectedTextBox = sender as TextBox;
             WallPath(SelectedTextBox);
+        }
+
+        private void ComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Style = this.comboBox1.Text;
         }
     }
 }

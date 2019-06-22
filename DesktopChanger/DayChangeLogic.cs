@@ -28,28 +28,28 @@ namespace DesktopChanger
             switch (day)
             {
                 case "Monday":
-                    WallpaperChanger.WallChange(PathWorker.WallpaperPath[0]);
+                    WallpaperChanger.WallChange(PathWorker.WallpaperPath[0], MainWindow.Style);
                     newDay = day;
                     break;
                 case "Tuesday":
-                    WallpaperChanger.WallChange(PathWorker.WallpaperPath[1]);
+                    WallpaperChanger.WallChange(PathWorker.WallpaperPath[1], MainWindow.Style);
                     newDay = day;
                     break;
                 case "Wednesday":
-                    WallpaperChanger.WallChange(PathWorker.WallpaperPath[2]);
+                    WallpaperChanger.WallChange(PathWorker.WallpaperPath[2], MainWindow.Style);
                     newDay = day;
                     break;
                 case "Thursday":
-                    WallpaperChanger.WallChange(PathWorker.WallpaperPath[3]);
+                    WallpaperChanger.WallChange(PathWorker.WallpaperPath[3], MainWindow.Style);
                     break;
                 case "Friday":
-                    WallpaperChanger.WallChange(PathWorker.WallpaperPath[4]);
+                    WallpaperChanger.WallChange(PathWorker.WallpaperPath[4], MainWindow.Style);
                     break;
                 case "Saturday":
-                    WallpaperChanger.WallChange(PathWorker.WallpaperPath[5]);
+                    WallpaperChanger.WallChange(PathWorker.WallpaperPath[5], MainWindow.Style);
                     break;
                 case "Sunday":
-                    WallpaperChanger.WallChange(PathWorker.WallpaperPath[6]);
+                    WallpaperChanger.WallChange(PathWorker.WallpaperPath[6], MainWindow.Style);
                     break;
                 default:
                     break;
