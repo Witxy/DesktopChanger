@@ -4,10 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DesktopChanger"
-        mc:Ignorable="d" Height="326.183" Width="666.808" Title="WallpaperChanger">
-
-
-
+        mc:Ignorable="d" Height="335.44" Width="666.808" Title="WallpaperChanger">
     <Grid Margin="0,0,0,2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="110*"/>
@@ -20,22 +17,15 @@
         <Label x:Name="LblFriday" Content="Пятница" HorizontalAlignment="Left" Height="28" Margin="10,142,0,0" VerticalAlignment="Top" Width="107" Grid.ColumnSpan="2"/>
         <Label x:Name="LblSaturday" Content="Суббота" HorizontalAlignment="Left" Height="28" Margin="10,175,0,0" VerticalAlignment="Top" Width="107" Grid.ColumnSpan="2"/>
         <Label x:Name="LblSunday" Content="Воскресенье" HorizontalAlignment="Left" Height="28" Margin="10,208,0,0" VerticalAlignment="Top" Width="107" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="txtMonday" HorizontalAlignment="Left" Height="28" Margin="117,16,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16" TextAlignment="Justify" IsReadOnlyCaretVisible="True" IsEnabled="False" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="txtTuesday" HorizontalAlignment="Left" Height="28" Margin="117,49,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16" TextAlignment="Justify" IsReadOnlyCaretVisible="True" IsEnabled="False" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="txtWednesday" HorizontalAlignment="Left" Height="28" Margin="117,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16" TextAlignment="Justify" IsReadOnlyCaretVisible="True" IsEnabled="False" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="txtThursday" HorizontalAlignment="Left" Height="28" Margin="117,115,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16" TextAlignment="Justify" IsReadOnlyCaretVisible="True" IsEnabled="False" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="txtFriday" HorizontalAlignment="Left" Height="28" Margin="117,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16" TextAlignment="Justify" IsReadOnlyCaretVisible="True" IsEnabled="False" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="txtSaturday" HorizontalAlignment="Left" Height="28" Margin="117,181,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16" TextAlignment="Justify" IsReadOnlyCaretVisible="True" IsEnabled="False" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="txtSunday" HorizontalAlignment="Left" Height="28" Margin="117,214,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16" TextAlignment="Justify" IsReadOnlyCaretVisible="True" IsEnabled="False" Grid.ColumnSpan="2"/>
-        <Button  x:Name="btnMonday" Content="Обзор..." HorizontalAlignment="Left" Height="28" Margin="40,16,0,0" VerticalAlignment="Top" Width="95" Click="BtnMonday_Click" Grid.Column="1"/>
-        <Button  x:Name="btnTuesday" Content="Обзор..." HorizontalAlignment="Left" Height="28" Margin="40,49,0,0" VerticalAlignment="Top" Width="95" Click="BtnTuesday_Click" Grid.Column="1"/>
-        <Button  x:Name="btnWednesday" Content="Обзор..." HorizontalAlignment="Left" Height="28" Margin="40,82,0,0" VerticalAlignment="Top" Width="95" Click="BtnWednesday_Click" Grid.Column="1"/>
-        <Button  x:Name="btnThursday" Content="Обзор..." HorizontalAlignment="Left" Height="28" Margin="40,115,0,0" VerticalAlignment="Top" Width="95" Click="BtnThursday_Click" Grid.Column="1"/>
-        <Button  x:Name="btnFriday" Content="Обзор..." HorizontalAlignment="Left" Height="28" Margin="40,148,0,0" VerticalAlignment="Top" Width="95" Click="BtnFriday_Click" Grid.Column="1"/>
-        <Button  x:Name="btnSaturday" Content="Обзор..." HorizontalAlignment="Left" Height="28" Margin="40,181,0,0" VerticalAlignment="Top" Width="95" Click="BtnSaturday_Click" Grid.Column="1"/>
-        <Button  x:Name="btnSunday" Content="Обзор..." HorizontalAlignment="Left" Height="28" Margin="40,213,0,0" VerticalAlignment="Top" Width="95" Click="BtnSunday_Click" Grid.Column="1"/>
+        <TextBox x:Name="txtMonday" HorizontalAlignment="Left" Height="28" Margin="117,16,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220" FontSize="16" TextAlignment="Justify" IsReadOnlyCaretVisible="True" Grid.ColumnSpan="2" MouseDoubleClick="TxtMonday_MouseDoubleClick"/>
+        <TextBox x:Name="txtTuesday" HorizontalAlignment="Left" Height="28" Margin="117,49,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220" FontSize="16" TextAlignment="Justify" IsReadOnlyCaretVisible="True" Grid.ColumnSpan="2" MouseDoubleClick="TxtMonday_MouseDoubleClick"/>
+        <TextBox x:Name="txtWednesday" HorizontalAlignment="Left" Height="28" Margin="117,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220" FontSize="16" TextAlignment="Justify" IsReadOnlyCaretVisible="True" Grid.ColumnSpan="2" MouseDoubleClick="TxtMonday_MouseDoubleClick"/>
+        <TextBox x:Name="txtThursday" HorizontalAlignment="Left" Height="28" Margin="117,115,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220" FontSize="16" TextAlignment="Justify" IsReadOnlyCaretVisible="True" Grid.ColumnSpan="2" MouseDoubleClick="TxtMonday_MouseDoubleClick"/>
+        <TextBox x:Name="txtFriday" HorizontalAlignment="Left" Height="28" Margin="117,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220" FontSize="16" TextAlignment="Justify" IsReadOnlyCaretVisible="True" Grid.ColumnSpan="2" MouseDoubleClick="TxtMonday_MouseDoubleClick"/>
+        <TextBox x:Name="txtSaturday" HorizontalAlignment="Left" Height="28" Margin="117,181,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220" FontSize="16" TextAlignment="Justify" IsReadOnlyCaretVisible="True" Grid.ColumnSpan="2" MouseDoubleClick="TxtMonday_MouseDoubleClick"/>
+        <TextBox x:Name="txtSunday" HorizontalAlignment="Left" Height="28" Margin="117,214,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220" FontSize="16" TextAlignment="Justify" IsReadOnlyCaretVisible="True" Grid.ColumnSpan="2" MouseDoubleClick="TxtMonday_MouseDoubleClick"/>
         <Button  x:Name="btnReady" Content="Готово!" HorizontalAlignment="Left" Height="32" Margin="10,253,0,0" VerticalAlignment="Top" Width="327" Click="BtnReady_Click" Grid.ColumnSpan="2"/>
-        <ComboBox x:Name="comboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="246,22,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+        <ComboBox x:Name="comboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="239,16,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged" Height="28" FontSize="16">
             <ComboBoxItem Content="Понедельник"/>
             <ComboBoxItem Content="Вторник"/>
             <ComboBoxItem Content="Среда"/>
@@ -44,9 +34,8 @@
             <ComboBoxItem Content="Суббота"/>
             <ComboBoxItem Content="Воскресенье"/>
         </ComboBox>
-        <Button x:Name="ButtonDaySet" Content="ебашить" Grid.Column="1" HorizontalAlignment="Left" Margin="246,90,0,0" VerticalAlignment="Top" Width="120" Click="ButtonDaySet_Click"/>
-        <TextBox x:Name="TextBoxWallpaperPath" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="246,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="ButtonPathSet" Content="Path" Grid.Column="1" HorizontalAlignment="Left" Margin="371,57,0,0" VerticalAlignment="Top" Width="55" Height="23" Click="ButtonPathSet_Click"/>
-
+        <Button x:Name="ButtonDaySet" Content="ебашить" Grid.Column="1" HorizontalAlignment="Left" Margin="239,94,0,0" VerticalAlignment="Top" Width="120" Click="ButtonDaySet_Click" Height="32"/>
+        <TextBox x:Name="TextBoxWallpaperPath" Text="fdsfds" Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="147,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="295" FontSize="16" MouseDoubleClick="TxtMonday_MouseDoubleClick"/>
+        <Label x:Name="label" Content="&lt;--- doubleclick to change wallpaper           ^" Grid.Column="1" HorizontalAlignment="Left" Margin="147,142,0,0" VerticalAlignment="Top" Width="250"/>
     </Grid>
 </Window>

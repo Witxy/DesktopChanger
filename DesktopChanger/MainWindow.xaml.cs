@@ -12,33 +12,20 @@ namespace DesktopChanger
         bool isExisted = false;
         public MainWindow()
         {
+            PathWorker.WallpaperPathWorker();
+
             InitializeComponent();
+            
+            DateTime localDate1 = DateTime.Now;
+            String minute = localDate1.ToString("mm", new CultureInfo("en-US"));
+            String second = localDate1.ToString("ss", new CultureInfo("en-US"));
 
-            try
-            {
-                PathWorker.WallpaperPathWorker();
-                isExisted = true;
+            int trueMinute = 0;
+            int trueSeconds = 60 - Convert.ToInt16(second);
 
-                DateTime localDate1 = DateTime.Now;
-                String minute = localDate1.ToString("mm", new CultureInfo("en-US"));
-                String second = localDate1.ToString("ss", new CultureInfo("en-US"));
-
-                int trueMinute = 0;
-                int trueSeconds = 60 - Convert.ToInt16(second);
-
-                DayChangeLogic.timer.Tick += new EventHandler(DayChangeLogic.timerTick);
-                DayChangeLogic.timer.Interval = new TimeSpan(0, trueMinute, trueSeconds);
-                DayChangeLogic.timer.Start();
-            }
-            catch (Exception ev)
-            {
-
-            }
-
-            if (isExisted)
-            {
-                this.Hide();
-            }
+            DayChangeLogic.timer.Tick += new EventHandler(DayChangeLogic.timerTick);
+            DayChangeLogic.timer.Interval = new TimeSpan(0, trueMinute, trueSeconds);
+            DayChangeLogic.timer.Start();
 
             System.Windows.Forms.NotifyIcon ni = new System.Windows.Forms.NotifyIcon();
             ni.Icon = new System.Drawing.Icon("fire-2-24.ico");
@@ -47,10 +34,8 @@ namespace DesktopChanger
 
             myMenu1.MenuItems.Add("Настройки", new EventHandler(FormShow));
             myMenu1.MenuItems.Add("Выход", new EventHandler(FormExit));
-            ni.ContextMenu = myMenu1;
-    
+            ni.ContextMenu = myMenu1;    
         }
-
         
         public void FormShow(object sender, EventArgs e)
         {
@@ -83,41 +68,6 @@ namespace DesktopChanger
                 pP.Text = myDialog.FileName;
             }
 
-        }
-
-        private void BtnMonday_Click(object sender, RoutedEventArgs e)
-        {
-            WallPath(txtMonday);
-        }
-
-        private void BtnTuesday_Click(object sender, RoutedEventArgs e)
-        {
-            WallPath(txtTuesday);
-        }
-
-        private void BtnWednesday_Click(object sender, RoutedEventArgs e)
-        {
-            WallPath(txtWednesday);
-        }
-
-        private void BtnThursday_Click(object sender, RoutedEventArgs e)
-        {
-            WallPath(txtThursday);
-        }
-
-        private void BtnFriday_Click(object sender, RoutedEventArgs e)
-        {
-            WallPath(txtFriday);
-        }
-
-        private void BtnSaturday_Click(object sender, RoutedEventArgs e)
-        {
-            WallPath(txtSaturday);
-        }
-
-        private void BtnSunday_Click(object sender, RoutedEventArgs e)
-        {
-            WallPath(txtSunday);
         }
 
         private void BtnReady_Click(object sender, RoutedEventArgs e)
@@ -155,9 +105,15 @@ namespace DesktopChanger
             PathWorker.WallpaperPathWriter();
         }
 
-        private void ButtonPathSet_Click(object sender, RoutedEventArgs e)
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            WallPath(TextBoxWallpaperPath);
+            TextBoxWallpaperPath.Text = PathWorker.WallpaperPath[comboBox.SelectedIndex];
+        }
+
+        private void TxtMonday_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var SelectedTextBox = sender as TextBox;
+            WallPath(SelectedTextBox);
         }
     }
 }
