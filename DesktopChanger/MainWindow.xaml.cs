@@ -16,7 +16,6 @@ namespace DesktopChanger
 
             InitializeComponent();
 
-
             DateTime localDate1 = DateTime.Now;
             String minute = localDate1.ToString("mm", new CultureInfo("en-US"));
             String second = localDate1.ToString("ss", new CultureInfo("en-US"));
@@ -75,28 +74,11 @@ namespace DesktopChanger
             {
                 pP.Text = myDialog.FileName;
             }
-
-        }
-
-        private void BtnReady_Click(object sender, RoutedEventArgs e)
-        {              
-             PathWorker.WallpaperPathChanger(txtMonday.Text, 0);
-             PathWorker.WallpaperPathChanger(txtSaturday.Text, 1);
-             PathWorker.WallpaperPathChanger(txtWednesday.Text, 2);
-             PathWorker.WallpaperPathChanger(txtThursday.Text, 3);
-             PathWorker.WallpaperPathChanger(txtFriday.Text, 4);
-             PathWorker.WallpaperPathChanger(txtSaturday.Text, 5);
-             PathWorker.WallpaperPathChanger(txtSunday.Text, 6);
-             PathWorker.WallpaperPathWriter();   
-
-             DayChangeLogic.timer.Tick += new EventHandler(DayChangeLogic.timerTick);
-             DayChangeLogic.timer.Interval = new TimeSpan(0, 0, 5);
-             DayChangeLogic.timer.Start();                    
         }
 
         private void ButtonDaySet_Click(object sender, RoutedEventArgs e)
         {
-            int DayIndex = comboBox.SelectedIndex;
+            int DayIndex = ComboBoxDayOfWeek.SelectedIndex;
             switch (DayIndex)
             {
                 case 0: PathWorker.WallpaperPathChanger(TextBoxWallpaperPath.Text, DayIndex); break;
@@ -118,17 +100,17 @@ namespace DesktopChanger
 
         private void ComboBox1_DropDownClosed(object sender, EventArgs e)
         {
-            Style = this.comboBox1.Text;
+            Style = this.ComboBoxWallpaperPositon.Text;
         }
 
         private void ComboBox1_Initialized(object sender, EventArgs e)
         {
-            Style = this.comboBox1.Text;
+            Style = this.ComboBoxWallpaperPositon.Text;
         }
 
         private void ComboBox_DropDownClosed(object sender, EventArgs e)
         {
-            TextBoxWallpaperPath.Text = PathWorker.WallpaperPath[comboBox.SelectedIndex];
+            TextBoxWallpaperPath.Text = PathWorker.WallpaperPath[ComboBoxDayOfWeek.SelectedIndex];
         }
     }
 }

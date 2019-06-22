@@ -21,7 +21,6 @@ namespace DesktopChanger
             {
                 dayChange(day);
             }
-
         }
         private static void dayChange(string day)
         {
@@ -35,22 +34,13 @@ namespace DesktopChanger
                     WallpaperChanger.WallChange(PathWorker.WallpaperPath[1], MainWindow.Style);
                     newDay = day;
                     break;
-                case "Wednesday":
-                    WallpaperChanger.WallChange(PathWorker.WallpaperPath[2], MainWindow.Style);
+                case "Wednesday": WallpaperChanger.WallChange(PathWorker.WallpaperPath[2], MainWindow.Style);
                     newDay = day;
                     break;
-                case "Thursday":
-                    WallpaperChanger.WallChange(PathWorker.WallpaperPath[3], MainWindow.Style);
-                    break;
-                case "Friday":
-                    WallpaperChanger.WallChange(PathWorker.WallpaperPath[4], MainWindow.Style);
-                    break;
-                case "Saturday":
-                    WallpaperChanger.WallChange(PathWorker.WallpaperPath[5], MainWindow.Style);
-                    break;
-                case "Sunday":
-                    WallpaperChanger.WallChange(PathWorker.WallpaperPath[6], MainWindow.Style);
-                    break;
+                case "Thursday": WallpaperChanger.WallChange(PathWorker.WallpaperPath[3], MainWindow.Style); break;
+                case "Friday":   WallpaperChanger.WallChange(PathWorker.WallpaperPath[4], MainWindow.Style); break;
+                case "Saturday": WallpaperChanger.WallChange(PathWorker.WallpaperPath[5], MainWindow.Style); break;
+                case "Sunday":   WallpaperChanger.WallChange(PathWorker.WallpaperPath[6], MainWindow.Style); break;
                 default:
                     break;
             }
