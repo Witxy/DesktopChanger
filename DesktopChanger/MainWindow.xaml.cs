@@ -3,13 +3,12 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Globalization;
-
+using System.Diagnostics;
 
 namespace DesktopChanger
 {
     public partial class MainWindow : Window
     {
-        bool isExisted = false;
         public MainWindow()
         {
             PathWorker.WallpaperPathWorker();
@@ -33,14 +32,21 @@ namespace DesktopChanger
             System.Windows.Forms.ContextMenu myMenu1 = new System.Windows.Forms.ContextMenu();
 
             myMenu1.MenuItems.Add("Настройки", new EventHandler(FormShow));
+            myMenu1.MenuItems.Add("About", new EventHandler(OpenGithub));
             myMenu1.MenuItems.Add("Выход", new EventHandler(FormExit));
-            ni.ContextMenu = myMenu1;    
+            ni.ContextMenu = myMenu1;
+            ni.DoubleClick += new EventHandler(FormShow);
         }
         
         public void FormShow(object sender, EventArgs e)
         {
             this.Show();
             this.WindowState = WindowState.Normal;
+        }
+
+        public void OpenGithub(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/Witxy/DesktopChanger");
         }
 
         public void FormExit(object sender, EventArgs e)
@@ -81,12 +87,9 @@ namespace DesktopChanger
              PathWorker.WallpaperPathChanger(txtSunday.Text, 6);
              PathWorker.WallpaperPathWriter();   
 
-             if (!isExisted)
-             {
-                DayChangeLogic.timer.Tick += new EventHandler(DayChangeLogic.timerTick);
-                DayChangeLogic.timer.Interval = new TimeSpan(0, 0, 5);
-                DayChangeLogic.timer.Start();
-             }         
+             DayChangeLogic.timer.Tick += new EventHandler(DayChangeLogic.timerTick);
+             DayChangeLogic.timer.Interval = new TimeSpan(0, 0, 5);
+             DayChangeLogic.timer.Start();                    
         }
 
         private void ButtonDaySet_Click(object sender, RoutedEventArgs e)
