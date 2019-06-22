@@ -25,7 +25,7 @@
         <TextBox x:Name="txtSaturday" HorizontalAlignment="Left" Height="28" Margin="117,181,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220" FontSize="16" TextAlignment="Justify" IsReadOnlyCaretVisible="True" Grid.ColumnSpan="2" MouseDoubleClick="TxtMonday_MouseDoubleClick"/>
         <TextBox x:Name="txtSunday" HorizontalAlignment="Left" Height="28" Margin="117,214,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220" FontSize="16" TextAlignment="Justify" IsReadOnlyCaretVisible="True" Grid.ColumnSpan="2" MouseDoubleClick="TxtMonday_MouseDoubleClick"/>
         <Button  x:Name="btnReady" Content="Готово!" HorizontalAlignment="Left" Height="32" Margin="10,253,0,0" VerticalAlignment="Top" Width="327" Click="BtnReady_Click" Grid.ColumnSpan="2"/>
-        <ComboBox x:Name="comboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="147,16,0,0" VerticalAlignment="Top" Width="139" SelectionChanged="ComboBox_SelectionChanged" Height="28" FontSize="16" TabIndex="-1">
+        <ComboBox x:Name="comboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="147,16,0,0" VerticalAlignment="Top" Width="139" Height="28" FontSize="16" TabIndex="-1" DropDownClosed="ComboBox_DropDownClosed">
             <ComboBoxItem Content="Понедельник"/>
             <ComboBoxItem Content="Вторник"/>
             <ComboBoxItem Content="Среда"/>
@@ -37,7 +37,7 @@
         <Button x:Name="ButtonDaySet" Content="ебашить" Grid.Column="1" HorizontalAlignment="Left" Margin="239,94,0,0" VerticalAlignment="Top" Width="120" Click="ButtonDaySet_Click" Height="32"/>
         <TextBox x:Name="TextBoxWallpaperPath" Text="fdsfds" Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="147,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="295" FontSize="16" MouseDoubleClick="TxtMonday_MouseDoubleClick"/>
         <Label x:Name="label" Content="&lt;--- doubleclick to change wallpaper           ^" Grid.Column="1" HorizontalAlignment="Left" Margin="147,142,0,0" VerticalAlignment="Top" Width="250"/>
-        <ComboBox x:Name="comboBox1" Grid.Column="1" HorizontalAlignment="Left" Margin="297,16,0,0" VerticalAlignment="Top" Width="145" Height="28" FontSize="16" SelectionChanged="ComboBox1_SelectionChanged" IsSynchronizedWithCurrentItem="True" TabIndex="0" SelectedIndex="0">
+        <ComboBox x:Name="comboBox1" Grid.Column="1" HorizontalAlignment="Left" Margin="297,16,0,0" VerticalAlignment="Top" Width="145" Height="28" FontSize="16" IsSynchronizedWithCurrentItem="True" TabIndex="0" SelectedIndex="0" DropDownClosed="ComboBox1_DropDownClosed" Initialized="ComboBox1_Initialized">
             <ComboBoxItem Content="Fill"/>
             <ComboBoxItem Content="Fit"/>
             <ComboBoxItem Content="Span"/>

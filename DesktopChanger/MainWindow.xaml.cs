@@ -15,7 +15,8 @@ namespace DesktopChanger
             PathWorker.WallpaperPathWorker();
 
             InitializeComponent();
-            
+
+
             DateTime localDate1 = DateTime.Now;
             String minute = localDate1.ToString("mm", new CultureInfo("en-US"));
             String second = localDate1.ToString("ss", new CultureInfo("en-US"));
@@ -109,20 +110,25 @@ namespace DesktopChanger
             PathWorker.WallpaperPathWriter();
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            TextBoxWallpaperPath.Text = PathWorker.WallpaperPath[comboBox.SelectedIndex];
-        }
-
         private void TxtMonday_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var SelectedTextBox = sender as TextBox;
             WallPath(SelectedTextBox);
         }
 
-        private void ComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ComboBox1_DropDownClosed(object sender, EventArgs e)
         {
             Style = this.comboBox1.Text;
+        }
+
+        private void ComboBox1_Initialized(object sender, EventArgs e)
+        {
+            Style = this.comboBox1.Text;
+        }
+
+        private void ComboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            TextBoxWallpaperPath.Text = PathWorker.WallpaperPath[comboBox.SelectedIndex];
         }
     }
 }
